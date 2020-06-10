@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, flash, redirect, session, g
 from sqlalchemy.exc import IntegrityError
 
 from forms import UserAddForm, LoginForm, MessageForm, UserEditForm
-from models import db, connect_db, User, Message, Follows
+from models import db, connect_db, User, Message, Follows, Likes
 
 CURR_USER_KEY = "curr_user"
 
@@ -151,7 +151,9 @@ def users_show(user_id):
                 .limit(100)
                 .all())
 
-    return render_template('users/show.html', user=user, messages=messages)
+    liked_posts = [liked.id for liked in g.user.likes]
+
+    return render_template('users/show.html', user=user, messages=messages, likes=liked_posts)
 
 
 @app.route('/users/<int:user_id>/following')
@@ -267,6 +269,37 @@ def delete_user():
 
 
 ##############################################################################
+# Liked routes:
+
+@app.route('/messages/<int:message_id>/like', methods=["POST"])
+def like_post(message_id):
+    """ Create record of like in likes table """
+    # need to specify current user_id in query filter
+    is_liked = Likes.query.filter(Likes.message_id == message_id, Likes.user_id == g.user.id).first()
+
+    if is_liked:
+        db.session.delete(is_liked)
+        db.session.commit()
+    else:
+        liked_post = Likes(message_id=message_id, user_id=g.user.id)
+        db.session.add(liked_post)
+        db.session.commit()
+
+    return redirect('/')
+
+@app.route('/users/<int:user_id>/likes')
+def user_liked_posts(user_id):
+    """ list all the like records by the user """
+    user = User.query.get_or_404(user_id)
+
+    # line 294+296 is = line 113 of models.py 
+    # liked_msg_ids = [ liked_msg.id for liked_msg in g.user.likes ]
+
+    # liked_msgs = (Message.query.filter(Message.id.in_(liked_msg_ids)).all())
+
+    return render_template('users/liked.html', liked_msgs=user.likes, user=user)
+
+##############################################################################
 # Messages routes:
 
 @app.route('/messages/new', methods=["GET", "POST"])
@@ -338,7 +371,9 @@ def homepage():
                     .limit(100)
                     .all())
 
-        return render_template('home.html', messages=messages)
+        liked_posts = [liked.id for liked in g.user.likes]
+
+        return render_template('home.html', messages=messages, liked_posts=liked_posts)
 
     else:
         return render_template('home-anon.html')
