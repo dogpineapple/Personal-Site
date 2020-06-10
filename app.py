@@ -4,8 +4,8 @@ from flask import Flask, render_template, request, flash, redirect, session, g
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
-from forms import UserAddForm, LoginForm, MessageForm
-from models import db, connect_db, User, Message
+from forms import UserAddForm, LoginForm, MessageForm, UserEditForm
+from models import db, connect_db, User, Message, Follows
 
 CURR_USER_KEY = "curr_user"
 
@@ -98,12 +98,10 @@ def login():
     if form.validate_on_submit():
         user = User.authenticate(form.username.data,
                                  form.password.data)
-
         if user:
             do_login(user)
             flash(f"Hello, {user.username}!", "success")
             return redirect("/")
-
         flash("Invalid credentials.", 'danger')
 
     return render_template('users/login.html', form=form)
@@ -112,8 +110,10 @@ def login():
 @app.route('/logout')
 def logout():
     """Handle logout of user."""
-
-    # IMPLEMENT THIS
+    
+    do_logout()
+    flash("You have successfully logged out", 'success')
+    return redirect("/")
 
 
 ##############################################################################
@@ -150,6 +150,7 @@ def users_show(user_id):
                 .order_by(Message.timestamp.desc())
                 .limit(100)
                 .all())
+
     return render_template('users/show.html', user=user, messages=messages)
 
 
@@ -211,7 +212,42 @@ def stop_following(follow_id):
 def profile():
     """Update profile for current user."""
 
-    # IMPLEMENT THIS
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    user = g.user
+
+    form = UserEditForm(obj=user)
+
+    if form.validate_on_submit():
+        try:
+            if User.authenticate(user.username, form.password.data):
+                user.username=form.username.data,
+                user.email=form.email.data,
+                user.image_url=form.image_url.data or User.image_url.default.arg,
+                user.header_image_url = form.header_image_url.data,
+                user.location = form.location.data,
+                user.bio = form.bio.data
+            
+                db.session.commit()
+            
+            else:
+                form.password.errors = ['Incorrect Password']
+                return render_template('users/edit.html', form=form)
+
+        except IntegrityError:
+            flash("Username already taken", 'danger')
+            return render_template('users/edit.html', form=form)
+
+
+
+        return redirect(f"/users/{ user.id }")
+
+    else:
+        return render_template('users/edit.html', form=form)
+
+
 
 
 @app.route('/users/delete', methods=["POST"])
@@ -292,8 +328,13 @@ def homepage():
     """
 
     if g.user:
+
+        followings = [following.id for following in g.user.following]
+        followings.append(g.user.id)
+
         messages = (Message
                     .query
+                    .filter(Message.user_id.in_(followings))
                     .order_by(Message.timestamp.desc())
                     .limit(100)
                     .all())
