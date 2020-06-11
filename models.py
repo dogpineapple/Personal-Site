@@ -94,7 +94,9 @@ class User(db.Model):
         nullable=False,
     )
 
-    messages = db.relationship('Message')
+    # added `cascade='all,delete'` because sqlalchemy didn't delete the messages related to the 
+    # deleted user (https://stackoverflow.com/questions/5033547/sqlalchemy-cascade-delete)
+    messages = db.relationship('Message', cascade='all,delete')
 
     followers = db.relationship(
         "User",

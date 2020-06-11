@@ -136,7 +136,7 @@ class UserModelTestCase(TestCase):
         """Test if new user is created after successful signup"""
 
         u1 = User.signup(
-            email="test@test.com",
+                email="test@test.com",
                 username="testuser",
                 password="HASHED_PASSWORD",
                 image_url="/static/images/default-pic.png"
