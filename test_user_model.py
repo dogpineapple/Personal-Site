@@ -101,4 +101,85 @@ class UserModelTestCase(TestCase):
 
         self.assertTrue(u1.is_following(u2), True)
         self.assertFalse(u2.is_following(u1), False)
+    
+    def test_is_followed_by(self):
+        """Test if is followed by works."""
+
+        u1 = User(
+            email="test@test.com",
+            username="testuser",
+            password="HASHED_PASSWORD"
+        )
+
+        u2 = User(
+            email="test2@test.com",
+            username="testuser2",
+            password="HASHED_PASSWORD2"
+        )
+
+        db.session.add(u1)
+        db.session.add(u2)
+        db.session.commit()
+
+        follow = Follows(
+            user_being_followed_id = u2.id,
+            user_following_id = u1.id
+        )
+
+        db.session.add(follow)
+        db.session.commit()
+
+        self.assertFalse(u1.is_followed_by(u2), False)
+        self.assertTrue(u2.is_followed_by(u1), True)
+
+    def test_new_user_signup(self):
+        """Test if new user is created after successful signup"""
+
+        u1 = User.signup(
+            email="test@test.com",
+                username="testuser",
+                password="HASHED_PASSWORD",
+                image_url="/static/images/default-pic.png"
+        )
+
+        db.session.add(u1)
+        db.session.commit()
         
+        self.assertIsInstance(u1, User)
+
+    def test_invalid_new_user_signup(self):
+        """Test new user validations."""
+
+        try: 
+            u1 = User.signup(
+                username="testuser",
+                password="HASHED_PASSWORD",
+                image_url="/static/images/default-pic.png"
+                )
+
+            db.session.add(u1)
+            db.session.commit()
+        
+        except:
+            failed = "failed test"
+        
+        self.assertEqual(failed, "failed test")
+
+    def test_authenticate_user(self):
+        """Test if authenticating user works."""
+
+        u1 = User.signup(
+            email="TESTINGGGG@test.com",
+            username="testuser",
+            password="HASHED_PASSWORD",
+            image_url="/static/images/default-pic.png"
+        )
+
+        db.session.add(u1)
+        db.session.commit()
+
+        self.assertEqual(u1.authenticate("testuser", "HASHED_PASSWORD"), u1)
+        self.assertFalse(u1.authenticate("WRONG", "HASHED_PASSWORD"), u1)
+        self.assertFalse(u1.authenticate("testuser", "WRONG_PASSWORD"), u1)
+
+
