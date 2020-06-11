@@ -87,12 +87,12 @@ class UserViewTestCase(TestCase):
     def test_user_following_as_anon(self):
         """ Test if redirects user if user is not logged in when accessing user/<user.id>/following"""
 
-        resp = self.client.get(f'/users/{self.testuser.id}/following')
+        resp = self.client.get(f'/users/{self.testuser.id}/following', follow_redirects=True)
 
         html = resp.get_data(as_text=True)
 
-        self.assertEqual(resp.status_code, 302)
-        self.assertEqual(resp.location, "http://localhost/")
+        self.assertEqual(resp.status_code, 200)
+        self.assertIn("<h1>What's Happening?</h1>", html)
 
     # def test_user_following_as_user(self):
     #     with self.client as c:

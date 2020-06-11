@@ -39,6 +39,7 @@ class MessageViewTestCase(TestCase):
     def setUp(self):
         """Create test client, add sample data."""
 
+        db.session.rollback()
         User.query.delete()
         Message.query.delete()
 
@@ -48,6 +49,7 @@ class MessageViewTestCase(TestCase):
                                     email="test@test.com",
                                     password="testuser",
                                     image_url=None)
+        
 
         db.session.commit()
 
@@ -71,5 +73,54 @@ class MessageViewTestCase(TestCase):
 
             msg = Message.query.one()
             self.assertEqual(msg.text, "Hello")
+
+    
+    def test_show_message(self):
+        """Can we see a message"""
+        with app.test_client() as client:
+
+            msg = Message(text="this is a message",
+                        user_id=self.testuser.id
+                        )
+
+            db.session.add(msg)
+            db.session.commit()
+
+            resp = client.get(f"/messages/{msg.id}")
+            html = resp.get_data(as_text=True)
+
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn("this is a message", html)
+    
+    def test_delete_message_route(self):
+        """Can a logged in user successfully delete a message?"""
+
+        with self.client as c:
+            with c.session_transaction() as sess:
+                sess[CURR_USER_KEY] = self.testuser.id
+
+            msg = Message(text="this is a message",
+                        user_id=self.testuser.id
+                        )
+
+            db.session.add(msg)
+            db.session.commit()
+
+            resp = c.post(f"/messages/{msg.id}/delete")
+
+            self.assertEqual(resp.status_code, 302)
+
+            # this is because we couldn't access the db.relationship:
+            msgs = Message.query.filter(Message.user_id == self.testuser.id).all()
+
+            self.assertEqual(msgs, [])
+
+    
+
+    
+
+
+    
+
 
     
