@@ -58,7 +58,7 @@ class UserModelTestCase(TestCase):
         self.assertEqual(len(u.followers), 0)
 
     def test_user_repr_method(self):
-
+        """Does the __repr__ method work?"""
         u = User(
             email="test@test.com",
             username="testuser",
@@ -71,3 +71,34 @@ class UserModelTestCase(TestCase):
         self.assertEqual(len(u.messages), 0)
         self.assertEqual(len(u.followers), 0)
         self.assertEqual(u.__repr__(), f"<User #{u.id}: {u.username}, {u.email}>")
+
+    def test_is_following(self):
+        """Test if following works"""
+
+        u1 = User(
+            email="test@test.com",
+            username="testuser",
+            password="HASHED_PASSWORD"
+        )
+
+        u2 = User(
+            email="test2@test.com",
+            username="testuser2",
+            password="HASHED_PASSWORD2"
+        )
+
+        db.session.add(u1)
+        db.session.add(u2)
+        db.session.commit()
+
+        follow = Follows(
+            user_being_followed_id = u2.id,
+            user_following_id = u1.id
+        )
+
+        db.session.add(follow)
+        db.session.commit()
+
+        self.assertTrue(u1.is_following(u2), True)
+        self.assertFalse(u2.is_following(u1), False)
+        
