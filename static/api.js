@@ -19,3 +19,22 @@ $('.messages-like').on('click', '.fa', async function(event){
   $(event.target).toggleClass("fa-thumbs-up fa-star");
   $(event.target).closest('button').toggleClass("btn-secondary btn-primary");
 })
+
+$('.create-new-message').on('submit', async function(event){
+  event.preventDefault();
+
+  let text = $('#text').val();
+
+  let data = await postNewMessage(text);
+
+  console.log(data)
+
+})
+
+
+async function postNewMessage (text) {
+
+  let data = {'text': text}
+  let resp = await axios.post('http://localhost:5000/messages/new', data);
+  return resp.data;
+}
