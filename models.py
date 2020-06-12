@@ -170,6 +170,22 @@ class User(db.Model):
                 return user
 
         return False
+    
+    @classmethod
+    def change_password(cls, username, old_password, new_password):
+        """Change a user's password"""
+
+        user = cls.query.filter_by(username=username).first()
+
+        if user:
+            is_auth = bcrypt.check_password_hash(user.password, old_password)
+            if is_auth:
+                hashed_pwd = bcrypt.generate_password_hash(new_password).decode('UTF-8')
+                user.password = hashed_pwd
+                db.session.commit()
+                return user
+        
+        return False
 
 
 class Message(db.Model):

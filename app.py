@@ -5,7 +5,7 @@ from flask import Flask, render_template, request, flash, redirect, session, g, 
 from sqlalchemy.exc import IntegrityError
 from functools import wraps
 
-from forms import UserAddForm, LoginForm, MessageForm, UserEditForm
+from forms import UserAddForm, LoginForm, MessageForm, UserEditForm, ChangePasswordForm
 from models import db, connect_db, User, Message, Follows, Likes
 
 CURR_USER_KEY = "curr_user"
@@ -119,6 +119,7 @@ def login():
     """Handle user login."""
 
     form = LoginForm()
+    new_msg_form = MessageForm()
 
     if form.validate_on_submit():
         user = User.authenticate(form.username.data,
@@ -129,13 +130,14 @@ def login():
             return redirect("/")
         flash("Invalid credentials.", 'danger')
 
-    return render_template('users/login.html', form=form)
+    return render_template('users/login.html', form=form, new_msg_form=new_msg_form)
 
 
 @app.route('/logout')
 def logout():
     """Handle logout of user."""
-    
+
+    new_msg_form = MessageForm()
     do_logout()
     flash("You have successfully logged out", 'success')
     return redirect("/")
@@ -274,6 +276,26 @@ def profile():
         return render_template('users/edit.html', form=form, new_msg_form=new_msg_form)
 
 
+@app.route('/users/change-password', methods=["GET", "POST"])
+@login_required
+def change_password():
+    """Change current user's password."""
+
+    user = g.user
+    form = ChangePasswordForm()
+    new_msg_form = MessageForm()
+
+    if form.validate_on_submit():
+        User.change_password(user.username, form.old_password.data, form.new_password.data)
+        return redirect(f"/users/{ user.id }")
+    
+    else:
+        return render_template('users/change-pw.html', form=form, new_msg_form=new_msg_form)
+
+    
+
+
+
 
 
 @app.route('/users/delete', methods=["POST"])
@@ -397,7 +419,7 @@ def homepage():
         return render_template('home.html', messages=messages, liked_posts=liked_posts, new_msg_form=form)
 
     else:
-        return render_template('home-anon.html')
+        return render_template('home-anon.html', new_msg_form=form)
 
 
 ##############################################################################
