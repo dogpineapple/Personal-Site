@@ -52,7 +52,7 @@
     </ul>
   </div>
 </nav>
-<div class="container">
+<div class="container" id="alerts-messages">
   {% for category, message in get_flashed_messages(with_categories=True) %}
   <div class="alert alert-{{ category }}">{{ message }}</div>
   {% endfor %}
@@ -61,5 +61,8 @@
   {% endblock %}
 
 </div>
+<script src="http://unpkg.com/jquery"></script>
+<script src="http://unpkg.com/axios/dist/axios.js"></script>
+<script src="/static/api.js"></script>
 </body>
 </html>

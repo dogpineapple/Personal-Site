@@ -52,6 +52,14 @@ def do_logout():
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
 
+def serialize_likes(like):
+    """serialize a SQLalchemy cupcakes obj"""
+
+    return {
+        "message_id" : like.message_id,
+        "user_id" : like.user_id
+    }
+
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -280,12 +288,13 @@ def like_post(message_id):
     if is_liked:
         db.session.delete(is_liked)
         db.session.commit()
+        return {"message" : "successfully removed like"}
     else:
         liked_post = Likes(message_id=message_id, user_id=g.user.id)
+        serialized = serialize_likes(liked_post)
         db.session.add(liked_post)
         db.session.commit()
-
-    return redirect('/')
+        return serialized
 
 @app.route('/users/<int:user_id>/likes')
 def user_liked_posts(user_id):
