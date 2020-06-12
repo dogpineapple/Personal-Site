@@ -1,8 +1,9 @@
 import os
 
-from flask import Flask, render_template, request, flash, redirect, session, g
+from flask import Flask, render_template, request, flash, redirect, session, g, url_for
 # from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
+from functools import wraps
 
 from forms import UserAddForm, LoginForm, MessageForm, UserEditForm
 from models import db, connect_db, User, Message, Follows, Likes
@@ -11,7 +12,7 @@ CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__)
 
-# Get DB_URI from environ variable (useful for production/testing) or,
+# Get DB_URI from environ variable (useful for production/testing) or
 # if not set there, use development local db.
 app.config['SQLALCHEMY_DATABASE_URI'] = (
     os.environ.get('DATABASE_URL', 'postgres:///warbler'))
@@ -39,6 +40,15 @@ def add_user_to_g():
     else:
         g.user = None
 
+def login_required(f):
+    @wraps(f) 
+    def decorated_function(*args, **kwargs):
+        if g.user is None:
+            flash("Access unauthorized.", "danger")
+            return redirect("/")
+        return f(*args, **kwargs)
+    return decorated_function
+
 
 def do_login(user):
     """Log in user."""
@@ -53,13 +63,20 @@ def do_logout():
         del session[CURR_USER_KEY]
 
 def serialize_likes(like):
-    """serialize a SQLalchemy cupcakes obj"""
+    """serialize a SQLalchemy like obj"""
 
     return {
         "message_id" : like.message_id,
         "user_id" : like.user_id
     }
 
+def serialize_message(msg):
+    """ serialize a SQLalchemy msg obj """
+
+    return {
+        "text": msg.text,
+        "user_id": g.user.id
+    }
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
@@ -134,6 +151,8 @@ def list_users():
     Can take a 'q' param in querystring to search by that username.
     """
 
+    form = MessageForm()
+
     search = request.args.get('q')
 
     if not search:
@@ -141,7 +160,7 @@ def list_users():
     else:
         users = User.query.filter(User.username.like(f"%{search}%")).all()
 
-    return render_template('users/index.html', users=users)
+    return render_template('users/index.html', users=users, new_msg_form=form)
 
 
 @app.route('/users/<int:user_id>')
@@ -149,6 +168,8 @@ def users_show(user_id):
     """Show user profile."""
 
     user = User.query.get_or_404(user_id)
+
+    form = MessageForm()
 
     # snagging messages in order from the database;
     # user.messages won't be in order by default
@@ -161,40 +182,39 @@ def users_show(user_id):
 
     liked_posts = [liked.id for liked in g.user.likes]
 
-    return render_template('users/show.html', user=user, messages=messages, likes=liked_posts)
+    return render_template('users/show.html', user=user, messages=messages, likes=liked_posts, new_msg_form=form)
 
 
 @app.route('/users/<int:user_id>/following')
+@login_required
 def show_following(user_id):
     """Show list of people this user is following."""
 
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
+    form = MessageForm()
 
     user = User.query.get_or_404(user_id)
-    return render_template('users/following.html', user=user)
+    return render_template('users/following.html', user=user, new_msg_form=form)
 
 
 @app.route('/users/<int:user_id>/followers')
+@login_required
 def users_followers(user_id):
     """Show list of followers of this user."""
 
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
+    form = MessageForm()
+
+    # if not g.user:
+    #     flash("Access unauthorized.", "danger")
+    #     return redirect("/")
 
     user = User.query.get_or_404(user_id)
-    return render_template('users/followers.html', user=user)
+    return render_template('users/followers.html', user=user, new_msg_form=form)
 
 
 @app.route('/users/follow/<int:follow_id>', methods=['POST'])
+@login_required
 def add_follow(follow_id):
     """Add a follow for the currently-logged-in user."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
 
     followed_user = User.query.get_or_404(follow_id)
     g.user.following.append(followed_user)
@@ -204,12 +224,9 @@ def add_follow(follow_id):
 
 
 @app.route('/users/stop-following/<int:follow_id>', methods=['POST'])
+@login_required
 def stop_following(follow_id):
     """Have currently-logged-in-user stop following this user."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
 
     followed_user = User.query.get(follow_id)
     g.user.following.remove(followed_user)
@@ -219,16 +236,15 @@ def stop_following(follow_id):
 
 
 @app.route('/users/profile', methods=["GET", "POST"])
+@login_required
 def profile():
     """Update profile for current user."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
 
     user = g.user
 
     form = UserEditForm(obj=user)
+
+    new_msg_form = MessageForm()
 
     if form.validate_on_submit():
         try:
@@ -244,29 +260,26 @@ def profile():
             
             else:
                 form.password.errors = ['Incorrect Password']
-                return render_template('users/edit.html', form=form)
+                return render_template('users/edit.html', form=form, new_msg_form=new_msg_form)
 
         except IntegrityError:
             flash("Username already taken", 'danger')
-            return render_template('users/edit.html', form=form)
+            return render_template('users/edit.html', form=form, new_msg_form=new_msg_form)
 
 
 
         return redirect(f"/users/{ user.id }")
 
     else:
-        return render_template('users/edit.html', form=form)
+        return render_template('users/edit.html', form=form, new_msg_form=new_msg_form)
 
 
 
 
 @app.route('/users/delete', methods=["POST"])
+@login_required
 def delete_user():
     """Delete user."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
 
     do_logout()
 
@@ -301,54 +314,52 @@ def user_liked_posts(user_id):
     """ list all the like records by the user """
     user = User.query.get_or_404(user_id)
 
+    form = MessageForm()
+
     # line 294+296 is = line 113 of models.py 
     # liked_msg_ids = [ liked_msg.id for liked_msg in g.user.likes ]
 
     # liked_msgs = (Message.query.filter(Message.id.in_(liked_msg_ids)).all())
 
-    return render_template('users/liked.html', liked_msgs=user.likes, user=user)
+    return render_template('users/liked.html', liked_msgs=user.likes, user=user, new_msg_form=form)
 
 ##############################################################################
 # Messages routes:
 
 @app.route('/messages/new', methods=["GET", "POST"])
+@login_required
 def messages_add():
     """Add a message:
 
     Show form if GET. If valid, update message and redirect to user page.
     """
 
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
+    text_data = request.json['text']
 
-    form = MessageForm()
+# didnt need line 348 because our form condition will always work and we dunno why 348 doesn't work D:
+    # if form.validate_on_submit():
+    msg = Message(text=text_data)
+    g.user.messages.append(msg)
+    db.session.commit()
+    serialized = serialize_message(msg)
 
-    if form.validate_on_submit():
-        msg = Message(text=form.text.data)
-        g.user.messages.append(msg)
-        db.session.commit()
-
-        return redirect(f"/users/{g.user.id}")
-
-    return render_template('messages/new.html', form=form)
+    return serialized
 
 
 @app.route('/messages/<int:message_id>', methods=["GET"])
 def messages_show(message_id):
     """Show a message."""
+    form = MessageForm()
 
     msg = Message.query.get(message_id)
-    return render_template('messages/show.html', message=msg)
+
+    return render_template('messages/show.html', message=msg, form=form)
 
 
 @app.route('/messages/<int:message_id>/delete', methods=["POST"])
+@login_required
 def messages_destroy(message_id):
     """Delete a message."""
-
-    if not g.user:
-        flash("Access unauthorized.", "danger")
-        return redirect("/")
 
     msg = Message.query.get(message_id)
     db.session.delete(msg)
@@ -368,6 +379,7 @@ def homepage():
     - anon users: no messages
     - logged in: 100 most recent messages of followed_users
     """
+    form = MessageForm()
 
     if g.user:
         followings = [following.id for following in g.user.following]
@@ -382,7 +394,7 @@ def homepage():
 
         liked_posts = [liked.id for liked in g.user.likes]
 
-        return render_template('home.html', messages=messages, liked_posts=liked_posts)
+        return render_template('home.html', messages=messages, liked_posts=liked_posts, new_msg_form=form)
 
     else:
         return render_template('home-anon.html')
