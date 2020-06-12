@@ -110,7 +110,9 @@ class MessageViewTestCase(TestCase):
 
             self.assertEqual(resp.status_code, 302)
 
-            # this is because we couldn't access the db.relationship:
+            # this is because we couldn't access the db.relationship. Most likely
+            # because we added the user in a different session (def setUp(self))
+            # so the two tables can't talk to one another
             msgs = Message.query.filter(Message.user_id == self.testuser.id).all()
 
             self.assertEqual(msgs, [])

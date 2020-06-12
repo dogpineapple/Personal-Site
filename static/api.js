@@ -15,7 +15,8 @@ $('.messages-like').on('click', '.fa', async function(event){
       $(".alert").remove();
     }, 2000)
   }
-
+  /*toggleClass looks at jQuery object and sees if it has class fa-thumbs-up, if it does, change to fa-star
+    and vice versa */
   $(event.target).toggleClass("fa-thumbs-up fa-star");
   $(event.target).closest('button').toggleClass("btn-secondary btn-primary");
 })
