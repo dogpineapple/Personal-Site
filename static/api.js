@@ -1,5 +1,5 @@
 async function getLikedPosts(message_id){
-  const response = await axios.post(`https://localhost:5000${message_id}`);
+  const response = await axios.post(`https://olivia-and-diana.herokuapp.com${message_id}`);
   return response.data;
 }
 
@@ -36,6 +36,6 @@ $('.create-new-message').on('submit', async function(event){
 async function postNewMessage (text) {
 
   let data = {'text': text}
-  let resp = await axios.post('https://localhost:5000/messages/new', data);
+  let resp = await axios.post('https://olivia-and-diana.herokuapp.com/messages/new', data);
   return resp.data;
 }
