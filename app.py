@@ -91,6 +91,7 @@ def signup():
     """
 
     form = UserAddForm()
+    new_msg_form = MessageForm()
 
     if form.validate_on_submit():
         try:
@@ -104,14 +105,14 @@ def signup():
 
         except IntegrityError:
             flash("Username already taken", 'danger')
-            return render_template('users/signup.html', form=form)
+            return render_template('users/signup.html', form=form, new_msg_form=new_msg_form)
 
         do_login(user)
 
         return redirect("/")
 
     else:
-        return render_template('users/signup.html', form=form)
+        return render_template('users/signup.html', form=form, new_msg_form=new_msg_form)
 
 
 @app.route('/login', methods=["GET", "POST"])
@@ -137,7 +138,7 @@ def login():
 def logout():
     """Handle logout of user."""
 
-    new_msg_form = MessageForm()
+    
     do_logout()
     flash("You have successfully logged out", 'success')
     return redirect("/")
