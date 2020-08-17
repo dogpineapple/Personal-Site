@@ -2,8 +2,6 @@
 
 (built by Olivia and Diana)
 
-Demo: https://olivia-and-diana.herokuapp.com/
-
 A twitter knockoff written in Python using Flask and SQLAlchemy.
 
 ## How did we build this?:
