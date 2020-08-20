@@ -1,0 +1,39 @@
+.Skills {
+  text-align: center;
+  /* border: darkviolet 2px solid; */
+}
+
+
+.Skills-listing {
+  display:flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+}
+
+
+.Skills-title {
+  font-weight: lighter;
+}
+
+.Skills-category {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  font-weight: bolder;
+}
+
+.Skills-category > span {
+  font-size: large;
+  font-weight: bold;
+  margin: 10px 5px;
+}
+
+.Skills-item {
+  margin: 10px;
+  font-weight: lighter;
+}

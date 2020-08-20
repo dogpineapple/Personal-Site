@@ -1,0 +1,25 @@
+.AboutHeader {
+  display: flex;
+  /* keep height here because ...-background relies on it */
+  height: 40%;
+}
+
+.AboutHeader-profilepic {
+  width: 250px;
+  margin-left: 20%;
+  border-radius: 50%;
+}
+
+.AboutHeader-background h1 {
+  font-weight: lighter;
+}
+
+.AboutHeader-background {
+  font-weight: lighter;
+  margin-left: 20%;
+  z-index: -1;
+}
+
+.AboutHeader-rithm {
+  font-weight: bolder;
+}

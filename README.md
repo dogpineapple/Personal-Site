@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Personal Website
+
+This project is my personal website meant to display my projects I have worked on and/or created. 
+
 ## Available Scripts
 
 In the project directory, you can run:

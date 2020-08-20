@@ -1,0 +1,30 @@
+.ProjectCard {
+  margin: 20px;
+  width: 45%;
+  height: fit-content;
+}
+
+
+.ProjectCard-link {
+  text-decoration: none;
+  color: palevioletred;
+}
+
+.ProjectCard-title {
+  margin: 10px 0px;
+  font-size: larger;
+  font-weight: lighter;
+}
+
+.ProjectCard-img > img {
+  width: 70%;
+  height: 200px;
+}
+
+.ProjectCard-img {
+  text-align: center;
+  border: 1px rgb(245, 245, 245) solid;
+  border-radius: 5px;
+}
+
+

@@ -1,0 +1,22 @@
+.Projects {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Projects-title {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.Projects-description {
+  font-weight: lighter;
+  text-align: center;
+  width: 60%;
+}
+
+.Projects-container {
+  display:flex;
+  margin-top: 35px;
+}
+

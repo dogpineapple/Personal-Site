@@ -1,0 +1,29 @@
+.Contact {
+  margin: 0px 0px 100px 0px;
+}
+
+.Contact-title {
+  font-weight: lighter;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.Contact-container {
+  text-align: center;
+}
+
+.Contact-container a {
+  color :lightslategray;
+  margin: 30px;
+}
+
+.Contact-tele {
+  font-weight: lighter;
+  margin: 30px auto;
+  width: fit-content;
+}
+
+.Contact-teleicon {
+  color :lightslategray;
+  margin-right: 10px;
+}

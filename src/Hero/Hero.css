@@ -1,0 +1,24 @@
+.Hero {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Hero-greeting {
+  font-size: xx-large;
+  margin: 5px 0px;
+  font-weight: lighter;
+}
+
+.Hero-self {
+  font-size: large;
+  font-weight: lighter;
+}
+
+.Hero-image {
+  width: 600px;
+}
+
+
+.Hero-intro {
+  padding-top: 5%;
+}
