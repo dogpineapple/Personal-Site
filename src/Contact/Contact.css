@@ -17,13 +17,9 @@
   margin: 30px;
 }
 
-.Contact-tele {
-  font-weight: lighter;
-  margin: 30px auto;
-  width: fit-content;
-}
 
-.Contact-teleicon {
-  color :lightslategray;
-  margin-right: 10px;
+@media screen and (max-width: 320px) {
+  .Contact-container a {
+    margin: 10px;
+  }
 }
