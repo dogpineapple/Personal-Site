@@ -37,7 +37,7 @@
   margin-left: 15px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 470px) {
   .TopNaviBar {
     font-size: 0.5em;
   }
