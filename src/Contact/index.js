@@ -17,7 +17,7 @@ function Contact() {
         <a href={linkedin}><FontAwesomeIcon icon={faLinkedin} size="3x"></FontAwesomeIcon></a>
         <a href ="mailto: diliang4783573@gmail.com"><FontAwesomeIcon icon={faEnvelope} size="3x"></FontAwesomeIcon></a>
       </div>
-      <div className="Contact-tele"><FontAwesomeIcon className="Contact-teleicon" icon={faPhone} /> 415-816-3646</div>
+      {/* <div className="Contact-tele"><FontAwesomeIcon className="Contact-teleicon" icon={faPhone} /> 415-816-3646</div> */}
     </div>
   );
 };
