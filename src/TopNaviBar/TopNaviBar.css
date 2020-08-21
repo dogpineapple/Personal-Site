@@ -37,12 +37,26 @@
   margin-left: 15px;
 }
 
+
 @media screen and (max-width: 470px) {
   .TopNaviBar {
-    font-size: 0.5em;
+    font-size: 0.7em;
   }
   .TopNaviBar-right {
-    left: 20%;
+    left: 23%;
+  }
+  .TopNaviBar-left {
+    margin: 0;
+    left: 18%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .TopNaviBar {
+    font-size: 0.63em;
+  }
+  .TopNaviBar-right {
+    left: 22%;
   }
   .TopNaviBar-left {
     margin: 0;
