@@ -1,13 +1,20 @@
 .AboutHeader {
   display: flex;
-  /* keep height here because ...-background relies on it */
-  height: 40%;
+  justify-content: space-around;
+  font-weight: lighter;
 }
 
 .AboutHeader-profilepic {
-  width: 250px;
-  margin-left: 20%;
-  border-radius: 50%;
+  width: 20em;
+  border-right: solid #dddddd 1px;
+  padding-right: 2em;
+}
+
+.AboutHeader-profilepic-subtitle {
+  text-align: center;
+  color: rgb(150, 150, 150);
+  font-size: 0.6em;
+  margin-right: 2em;
 }
 
 .AboutHeader-background h1 {
@@ -15,11 +22,33 @@
 }
 
 .AboutHeader-background {
-  font-weight: lighter;
-  margin-left: 20%;
+  margin-left: 10%;
   z-index: -1;
+  font-size: 0.9em;
 }
 
 .AboutHeader-rithm {
   font-weight: bolder;
+}
+
+@media screen and (max-width: 700px) {
+  .AboutHeader-background {
+    font-size: 0.8em;
+  }
+
+  .AboutHeader-profilepic {
+    width: 15em;
+    border: none;
+    padding: 0;
+  }
+  .AboutHeader-profilepic-cont {
+    text-align: center;
+  }
+
+  .AboutHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-weight: lighter;
+  }
 }

@@ -4,7 +4,6 @@
   height: fit-content;
 }
 
-
 .ProjectCard-link {
   text-decoration: none;
   color: palevioletred;
@@ -21,10 +20,22 @@
   height: 200px;
 }
 
+.ProjectCard-description {
+  font-weight: lighter;
+  font-size: 0.9rem;
+}
+
 .ProjectCard-img {
   text-align: center;
   border: 1px rgb(245, 245, 245) solid;
   border-radius: 5px;
+}
+
+@media screen and (max-width: 500px) {
+  .ProjectCard-img > img {
+    width: 70%;
+    height: 100px;
+  }
 }
 
 

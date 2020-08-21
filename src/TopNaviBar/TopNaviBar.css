@@ -2,9 +2,11 @@
   position: fixed;
   top: 0;
   width: 100%;
+  height: 3%;
   z-index: 2;
   padding: 10px;
   background-color: white;
+  font-weight: lighter;
 }
 
 .TopNaviBar a {
@@ -13,7 +15,8 @@
 }
 
 .TopNaviBar-left {
-  margin-left: 10%;
+  position: fixed;
+  left: 15%;
 }
 
 .TopNaviBar a:hover {
@@ -27,7 +30,7 @@
 
 .TopNaviBar-right {
   position: fixed;
-  right: 10%;
+  right: 15%;
 }
 
 .TopNaviBar-right a {

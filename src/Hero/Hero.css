@@ -1,5 +1,6 @@
 .Hero {
   display: flex;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -10,15 +11,20 @@
 }
 
 .Hero-self {
-  font-size: large;
+  font-size: 1em;
   font-weight: lighter;
 }
 
 .Hero-image {
-  width: 600px;
+  width: 25em;
 }
 
-
-.Hero-intro {
-  padding-top: 5%;
+@media screen and (max-width: 700px) {
+  .Hero {
+    flex-direction: column;
+  }
+  .Hero-image {
+    width: 20em;
+    margin-top: 20%;
+  }
 }

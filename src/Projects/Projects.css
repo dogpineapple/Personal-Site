@@ -13,10 +13,19 @@
   font-weight: lighter;
   text-align: center;
   width: 60%;
+  font-size: 0.9rem;
 }
 
 .Projects-container {
   display:flex;
   margin-top: 35px;
+}
+
+@media screen and (max-width: 700px) {
+  .Projects-container {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 

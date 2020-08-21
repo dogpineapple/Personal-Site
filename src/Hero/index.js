@@ -1,5 +1,4 @@
 import React from "react";
-import * as waterRight from "../images/water-right.png";
 import "./Hero.css";
 
 
@@ -15,7 +14,7 @@ function Hero() {
         </p>
       </div>
       <div className="Hero-image-container">
-        <img className="Hero-image" src={waterRight} alt="waterFfxiv" />
+        <img className="Hero-image" src="https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/17426035_1363415940410325_1423941097164729388_n.jpg?_nc_cat=104&_nc_sid=7aed08&_nc_ohc=7-GuvLROnqMAX9yRV_K&_nc_ht=scontent-sjc3-1.xx&oh=6f34e4421a515a93464d0fade6afe1aa&oe=5F66C862" alt="waterFfxiv" />
       </div>
     </div>
   )

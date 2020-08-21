@@ -13,7 +13,7 @@ function Projects() {
 
   const microblog = {
     title: "Microblog",
-    description: "A simple blog site created with React and Node.js",
+    description: "A simple anonymous blog site created with React and Node.js",
     image: "https://i.imgur.com/bkwKhTt.jpg",
     link: "https://github.com/dogpineapple/react-microblog"
   }
