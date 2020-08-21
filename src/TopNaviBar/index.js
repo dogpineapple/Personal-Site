@@ -5,19 +5,22 @@ import './TopNaviBar.css'
 function TopNaviBar() {
   return (
     <nav className="TopNaviBar">
-      <NavLink className="TopNaviBar-left" activeClassName="active" exact to="/">
+      <NavLink className="TopNaviBar-left" activeClassName="selected" exact smooth to="/#top">
         Top
       </NavLink>
       <span className="TopNaviBar-right">
-        <NavLink activeClassName="active" exact to="/about">
+        <NavLink activeClassName="selected" exact smooth to="/#about">
           About Diana
         </NavLink>
-        <NavLink activeClassName="active" exact to="/projects">
+        <NavLink activeClassName="selected" exact smooth to="/#projects">
           Projects
         </NavLink>
-        <NavLink className="Navbar-signup" exact to="/contact">
+        <NavLink className="Navbar-signup" exact smooth to="/#contact">
           Contact
         </NavLink>
+        <a href="https://drive.google.com/file/d/1eQjO364AMVgQIJDect-Gg_XDbRInDZm0/view?usp=sharing">
+          Resume
+        </a>
       </span>
     </nav>
   );

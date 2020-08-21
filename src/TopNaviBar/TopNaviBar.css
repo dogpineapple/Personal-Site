@@ -22,7 +22,7 @@
 }
 
 .TopNaviBar a:focus {
-  color: lightblue;
+  color: rgb(175, 175, 175);
 }
 
 .TopNaviBar-right {

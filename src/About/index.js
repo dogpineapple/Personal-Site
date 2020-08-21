@@ -1,13 +1,12 @@
 import React from "react";
 import AboutHeader from "../AboutHeader";
 import "./About.css";
-import AboutGithub from "../AboutGithub";
 
 
 function About() {
 
   return (
-    <div className="About">
+    <div className="About" >
       <AboutHeader />
     </div>
   );
