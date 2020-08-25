@@ -9,7 +9,7 @@ const PostListCard = ({ post, id, votes}) => {
   return (
     <li className="PostListCard">
       <NavLink exact to={`/posts/${id}`}>{post.title}</NavLink>
-      <p>{post.description}</p>
+      <p className="PostListCard-description">{post.description}</p>
       <p>{post.votes} votes</p>
       <button className="btn btn-success" onClick={() => votes("up", id)}><FontAwesomeIcon icon={faThumbsUp} /></button>
       <button className="btn btn-danger" onClick={() => votes("down", id)}><FontAwesomeIcon icon={faThumbsDown} /></button>

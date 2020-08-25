@@ -6,6 +6,10 @@
   margin: 10px;
 }
 
+.PostListCard-description {
+  word-break: break-all;
+}
+
 @media screen and (max-width: 450px) {
   .PostListCard {
     width: 100px;
