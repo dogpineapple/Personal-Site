@@ -3,7 +3,7 @@ import { NavHashLink as NavLink } from 'react-router-hash-link';
 import './TopNaviBar.css'
 
 function TopNaviBar() {
-  const RESUME_URL = "https://drive.google.com/file/d/1LF6RytdNUgkK5NZ5qa9H2Rx29XxUdJhx/view?usp=sharing";
+  const RESUME_URL = "https://drive.google.com/file/d/1TAnyTnrhikEvbvBMy39OFI_74KF3ENFn/view?usp=sharing";
   return (
     <nav className="TopNaviBar">
       <NavLink className="TopNaviBar-left" activeClassName="selected" exact smooth to="/#top">
