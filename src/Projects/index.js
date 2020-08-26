@@ -7,24 +7,26 @@ function Projects() {
   const warbler = {
     title: "Warbler",
     description: "A twitter clone web app built using Python with Flask and SQLAlchemy.",
-    image: "https://www.continuumcolo.org/wp-content/uploads/2016/03/Image-Coming-Soon-Placeholder.png",
-    link: "https://github.com/dogpineapple/warbler"
+    image: "https://i.imgur.com/wwV9tvN.png",
+    link: "https://github.com/dogpineapple/warbler",
+    demo: "https://olivia-and-diana.herokuapp.com/"
   }
 
   const microblog = {
     title: "Microblog",
     description: "A simple anonymous blog site created with React and Node.js",
-    image: "https://i.imgur.com/bkwKhTt.jpg",
-    link: "https://github.com/dogpineapple/react-microblog"
+    image: "https://i.imgur.com/tPAiatz.png",
+    link: "https://github.com/dogpineapple/react-microblog",
+    demo: "https://microblog.diana-liang.com/"
   }
 
-  const shoply = {
-    title: "Shop.ly",
-    description: "A webstore app using React and Redux",
-    image: "https://www.continuumcolo.org/wp-content/uploads/2016/03/Image-Coming-Soon-Placeholder.png",
-    link: "https://github.com/dogpineapple/redux-shoply"
+  const jobly = {
+    title: "Job.ly",
+    description: "a job application site built using React on the frontend and Node.js/Express, PostgreSQL on the backend.",
+    image: "https://i.imgur.com/vpyZVQy.png",
+    link: "https://github.com/dogpineapple/react-jobly",
+    demo: "https://jobly.diana-liang.com/"
   }
-
 
   return (
     <div className="Projects">
@@ -36,7 +38,7 @@ function Projects() {
       <div className="Projects-container">
         <ProjectCard project={warbler} />
         <ProjectCard project={microblog} />
-        <ProjectCard project={shoply} />
+        <ProjectCard project={jobly} />
       </div>
     </div>
   );

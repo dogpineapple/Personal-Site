@@ -13,6 +13,7 @@ function ProjectCard({ project }) {
       <div className="ProjectCard-title">{project.title}</div>
       </a>
       <div className="ProjectCard-description">{project.description}</div>
+      <a className="ProjectCard-demo" href={project.demo}>Demo</a>
     </div>
   );
 };
