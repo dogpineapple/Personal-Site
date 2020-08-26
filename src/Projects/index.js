@@ -16,7 +16,7 @@ function Projects() {
     title: "Microblog",
     description: "A simple anonymous blog site created with React and Node.js",
     image: "https://i.imgur.com/tPAiatz.png",
-    link: "https://github.com/dogpineapple/react-microblog",
+    link: "https://github.com/hungale/react-microblog",
     demo: "https://microblog.diana-liang.com/"
   }
 
