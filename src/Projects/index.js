@@ -22,7 +22,7 @@ function Projects() {
 
   const jobly = {
     title: "Job.ly",
-    description: "a job application site built using React on the frontend and Node.js/Express, PostgreSQL on the backend.",
+    description: "A job application site built using React on the frontend and Node.js/Express, PostgreSQL on the backend.",
     image: "https://i.imgur.com/vpyZVQy.png",
     link: "https://github.com/dogpineapple/react-jobly",
     demo: "https://jobly.diana-liang.com/"

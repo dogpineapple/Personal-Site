@@ -4,12 +4,8 @@
   height: fit-content;
 }
 
-.ProjectCard-link {
-  text-decoration: none;
-  color: palevioletred;
-}
-
 .ProjectCard-title {
+  color: lightcoral;
   margin: 10px 0px;
   font-size: larger;
   font-weight: lighter;
@@ -31,7 +27,7 @@
   border-radius: 5px;
 }
 
-.ProjectCard-demo {
+.ProjectCard-link {
   color: skyblue;
 }
 

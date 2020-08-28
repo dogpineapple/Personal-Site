@@ -13,9 +13,9 @@ function Contact() {
     <div className="Contact">
       <h1 className="Contact-title">Let's keep in touch!</h1>
       <div className="Contact-container">
-        <a href={github} target="_blank"><FontAwesomeIcon icon={faGithub} size="2x"></FontAwesomeIcon></a>
-        <a href={linkedin} target="_blank"><FontAwesomeIcon icon={faLinkedin} size="2x"></FontAwesomeIcon></a>
-        <a href ="mailto: diliang4783573@gmail.com" target="_blank"><FontAwesomeIcon icon={faEnvelope} size="2x"></FontAwesomeIcon></a>
+        <a href={github} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} size="2x"></FontAwesomeIcon></a>
+        <a href={linkedin} target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} size="2x"></FontAwesomeIcon></a>
+        <a href ="mailto: diliang4783573@gmail.com" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faEnvelope} size="2x"></FontAwesomeIcon></a>
       </div>
     </div>
   );
