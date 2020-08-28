@@ -7,11 +7,11 @@ function TopNaviBar() {
   return (
     <nav className="TopNaviBar">
       <NavLink className="TopNaviBar-left" activeClassName="selected" exact smooth to="/#top">
-        Top
+        Diana Liang
       </NavLink>
       <span className="TopNaviBar-right">
         <NavLink activeClassName="selected" exact smooth to="/#about">
-          About Diana
+          About
         </NavLink>
         <NavLink activeClassName="selected" exact smooth to="/#projects">
           Projects
