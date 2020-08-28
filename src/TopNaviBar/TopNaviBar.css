@@ -30,7 +30,7 @@
 
 .TopNaviBar-right {
   position: fixed;
-  right: 15%;
+  right: 13%;
 }
 
 .TopNaviBar-right a {
@@ -40,10 +40,10 @@
 
 @media screen and (max-width: 470px) {
   .TopNaviBar {
-    font-size: 0.7em;
+    font-size: 0.64em;
   }
   .TopNaviBar-right {
-    left: 23%;
+    left: 40%;
   }
   .TopNaviBar-left {
     margin: 0;
@@ -51,24 +51,24 @@
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 414px) {
   .TopNaviBar {
-    font-size: 0.63em;
+    font-size: 0.7em;
   }
   .TopNaviBar-right {
-    left: 22%;
+    left: 30%;
   }
   .TopNaviBar-left {
-    margin: 0;
+    left: 13.5%;
   }
 }
 
 @media screen and (max-width: 320px) {
   .TopNaviBar {
-    font-size: 0.61em;
+    font-size: 0.63em;
   }
   .TopNaviBar-right {
-    left: 13%;
+    left: 25%;
   }
   .TopNaviBar-left {
     margin: 0%;
