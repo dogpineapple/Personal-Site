@@ -40,6 +40,7 @@ def add_user_to_g():
     else:
         g.user = None
 
+
 def login_required(f):
     @wraps(f) 
     def decorated_function(*args, **kwargs):
@@ -62,6 +63,7 @@ def do_logout():
     if CURR_USER_KEY in session:
         del session[CURR_USER_KEY]
 
+
 def serialize_likes(like):
     """serialize a SQLalchemy like obj"""
 
@@ -70,6 +72,7 @@ def serialize_likes(like):
         "user_id" : like.user_id
     }
 
+
 def serialize_message(msg):
     """ serialize a SQLalchemy msg obj """
 
@@ -77,6 +80,7 @@ def serialize_message(msg):
         "text": msg.text,
         "user_id": g.user.id
     }
+
 
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
