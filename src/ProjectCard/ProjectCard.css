@@ -12,7 +12,7 @@
 }
 
 .ProjectCard-img > img {
-  width: 100%;
+  width: auto;
   height: 200px;
 }
 
@@ -31,16 +31,9 @@
   color: skyblue;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 900px) {
   .ProjectCard-img > img {
-    width: 70%;
     height: 100px;
-  }
-}
-
-@media screen and (min-width: 1100px) {
-  .ProjectCard-img > img {
-    width: 75%;
   }
 }
 
