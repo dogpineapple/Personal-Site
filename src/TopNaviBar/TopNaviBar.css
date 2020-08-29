@@ -53,13 +53,15 @@
 
 @media screen and (max-width: 414px) {
   .TopNaviBar {
-    font-size: 0.7em;
+    font-size: 1.1em;
+    height: 3%;
   }
   .TopNaviBar-right {
-    left: 30%;
+    left: 27%;
   }
   .TopNaviBar-left {
-    left: 13.5%;
+    left: 4%;
+    font-weight: 600;
   }
 }
 
