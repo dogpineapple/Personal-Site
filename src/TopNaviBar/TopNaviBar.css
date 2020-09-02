@@ -5,7 +5,7 @@
   height: 3%;
   z-index: 2;
   padding: 10px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.95);
   font-weight: lighter;
 }
 
@@ -57,15 +57,29 @@
     height: 3%;
   }
   .TopNaviBar-right {
-    left: 27%;
+    left: 26%;
   }
   .TopNaviBar-left {
     left: 4%;
-    font-weight: 600;
+    font-weight: 400;
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 375px) {
+  .TopNaviBar {
+    font-size: 1em;
+    height: 3%;
+  }
+  .TopNaviBar-right {
+    left: 24%;
+  }
+  .TopNaviBar-left {
+    left: 2%;
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 345px) {
   .TopNaviBar {
     font-size: 0.63em;
   }
