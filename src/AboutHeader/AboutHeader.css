@@ -4,14 +4,8 @@
   font-weight: lighter;
 }
 
-.AboutHeader-background > h1 {
-  color: #005D85;
-}
-
 .AboutHeader-profilepic {
   width: 20em;
-  border-right: solid #dddddd 1px;
-  padding-right: 2em;
 }
 
 .AboutHeader-profilepic-subtitle {

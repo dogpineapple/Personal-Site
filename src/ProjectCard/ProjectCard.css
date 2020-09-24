@@ -5,7 +5,7 @@
 }
 
 .ProjectCard-title {
-  color: #005875;
+  color: #583a3a;
   margin: 10px 0px;
   font-size: larger;
   font-weight: lighter;
@@ -28,7 +28,7 @@
 }
 
 .ProjectCard-link {
-  color: skyblue;
+  color: rgb(38, 194, 255);
 }
 
 @media screen and (max-width: 900px) {

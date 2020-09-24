@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  background-color: rgb(240, 235, 224);
 }
 
 .Hero-greeting {
   font-size: xx-large;
   margin: 5px 0px;
   font-weight: lighter;
-  color: #005D85;
 }
 
 .Hero-self {
@@ -23,6 +23,7 @@
 @media screen and (max-width: 700px) {
   .Hero {
     flex-direction: column;
+    padding-top: 5%;
   }
   .Hero-image {
     width: 20em;
