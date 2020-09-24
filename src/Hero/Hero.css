@@ -7,7 +7,7 @@
 .Hero-greeting {
   font-size: xx-large;
   margin: 5px 0px;
-  width: 77px;
+  width: 80px;
   font-weight: lighter;
 }
 
@@ -32,7 +32,7 @@
 /* The typing effect */
 @keyframes typing {
   from { width: 0px }
-  to { width: 77px }
+  to { width: 80px }
 }
 
 /* The typewriter cursor effect */
