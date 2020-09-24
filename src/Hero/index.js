@@ -7,7 +7,7 @@ function Hero() {
   return (
     <div className="Hero">
       <div className="Hero-intro">
-        <p className="Hero-greeting">Hello!</p> 
+        <p className="Hero-greeting typewriter">Hello!</p> 
         <p className="Hero-self">
           I'm Diana, a Fullstack Software Engineer.
           <br/>

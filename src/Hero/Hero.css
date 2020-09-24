@@ -2,12 +2,12 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: rgb(240, 235, 224);
 }
 
 .Hero-greeting {
   font-size: xx-large;
   margin: 5px 0px;
+  width: 77px;
   font-weight: lighter;
 }
 
@@ -18,6 +18,27 @@
 
 .Hero-image {
   width: 28em;
+}
+
+.typewriter {
+  overflow: hidden; 
+  border-right: .15em solid rgb(187, 234, 255);
+  white-space: nowrap;
+  animation: 
+    typing 1.2s steps(17, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0px }
+  to { width: 77px }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: rgb(187, 234, 255) }
 }
 
 @media screen and (max-width: 700px) {
@@ -33,4 +54,5 @@
   .Hero-self {
     font-size: 1em;
   }
+
 }
