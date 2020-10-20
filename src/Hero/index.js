@@ -16,6 +16,7 @@ function Hero() {
       </div>
       <div className="Hero-image-container">
         <img className="Hero-image" src={PRO} alt="portrait" />
+        <div className="Hero-image-square"/>
       </div>
     </div>
   )
