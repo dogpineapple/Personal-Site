@@ -14,25 +14,26 @@ function Skills() {
       <h1 className="Skills-title">
         <p>Skills</p>
       </h1>
-      <div className="Skills-listing">
-        <div className="Skills-category">
-          <span>Programming Languages</span>
+      <div className="Skills-tablecontainer">
+      <table className="Skills-table">
+        <tr>
+          <th>Programming Languages</th>
           <SkillCard skills={languages} />
-        </div>
-        <div className="Skills-category">
-          <span>Libraries</span>
+        </tr>
+        <tr>
+          <th>Libraries</th>
           <SkillCard skills={libraries} />
-        </div>
-        <div className="Skills-category">
-          <span>Frameworks</span>
+        </tr>
+        <tr>
+          <th>Frameworks</th>
           <SkillCard skills={frameworks} />
-        </div>
-        <div className="Skills-category">
-          <span>Databases</span>
+        </tr>
+        <tr>
+          <th>Databases</th>
           <SkillCard skills={databases} />
-        </div>
+        </tr>
+      </table>
       </div>
-
     </div>
   );
 };
