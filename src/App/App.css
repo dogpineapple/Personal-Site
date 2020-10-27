@@ -22,3 +22,11 @@
   border-top: #dddddd 1px solid;
   width: 100%;
 }
+
+.App-scrollcat {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -5;
+  width: 10%;
+}
