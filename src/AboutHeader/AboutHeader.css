@@ -5,6 +5,7 @@
 }
 
 .AboutHeader-profilepic {
+  margin-top: 15%;
   width: 20em;
 }
 
@@ -28,6 +29,18 @@
   font-weight: bolder;
 }
 
+.AboutHeader-sample-art {
+  width: 25%;
+}
+
+.AboutHeader-sample {
+  font-size: 0.8rem;
+}
+
+.AboutHeader-sample-free {
+  font-size: 0.3rem;
+}
+
 @media screen and (max-width: 700px) {
   .AboutHeader-background {
     font-size: 0.96em;
@@ -35,6 +48,7 @@
 
   .AboutHeader-profilepic {
     width: 15em;
+    margin-top: 0;
     border: none;
     padding: 0;
   }
