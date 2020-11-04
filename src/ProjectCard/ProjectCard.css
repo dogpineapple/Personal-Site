@@ -1,6 +1,6 @@
 .ProjectCard {
-  margin: 20px;
-  width: 45%;
+  margin: 20px auto;
+  width: 40%;
   height: fit-content;
 }
 
@@ -12,7 +12,6 @@
 }
 
 .ProjectCard-img > img {
-  width: auto;
   height: 200px;
 }
 
@@ -22,19 +21,13 @@
 }
 
 .ProjectCard-img {
-  text-align: center;
   border: 1px rgb(245, 245, 245) solid;
   border-radius: 5px;
+  width: fit-content;
 }
 
 .ProjectCard-link {
   color: rgb(38, 194, 255);
-}
-
-@media screen and (max-width: 900px) {
-  .ProjectCard-img > img {
-    height: 100px;
-  }
 }
 
 
