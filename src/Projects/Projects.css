@@ -22,7 +22,6 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  border: coral 2px solid;
 }
 
 @media screen and (max-width: 700px) {
