@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Created by @hungale and @dogpineapple 
 
+**DEMO**: https://microblog.diana-liang.com/
+NOTE: the backend server is hosted by Heroku, so please reload the page after a few seconds if no posts shows up!
+
 ## Microblog / Tech Stack
 
 The purpose of this application is to allow users to anonymously create micro-posts about anything and everything. 
