@@ -3,7 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Created by @hungale and @dogpineapple 
 
 **DEMO**: https://microblog.diana-liang.com/
-NOTE: the backend server is hosted by Heroku, so please reload the page after a few seconds if no posts shows up!
+> NOTE: the backend server is hosted by Heroku, so please reload the page after a few seconds if no posts shows up!
+- **frontend** repository link: https://github.com/dogpineapple/Personal-Site/tree/microblog
+- **backend** repository link: https://github.com/dogpineapple/react-microblog-backend
 
 ## Microblog / Tech Stack
 
