@@ -2,9 +2,25 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Created by @hungale and @dogpineapple 
 
-## Microblog
+**DEMO**: https://microblog.diana-liang.com/
+> NOTE: the backend server is hosted by Heroku, so please reload the page after a few seconds if no posts shows up!
+- **frontend** repository link: https://github.com/dogpineapple/Personal-Site/tree/microblog
+- **backend** repository link: https://github.com/dogpineapple/react-microblog-backend
+
+## Microblog / Tech Stack
 
 The purpose of this application is to allow users to anonymously create micro-posts about anything and everything. 
+In Microblog you can...
+- Create/Edit/Delete a post
+- Create/Delete a comment within a post
+- Vote up or down a post
+- View posts based on popularity in a list
+
+**Frontend**: React.js, react-redux, redux-thunk
+
+**Backend**: Node.js, Express.js
+
+**Database**: PostgreSQL
 
 ## Available Scripts
 
