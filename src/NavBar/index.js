@@ -9,7 +9,7 @@ function NavBar({ isLoggedIn, setLoggedIn }) {
   // handleLogout is placed here because `useHistory` can only be used within `BrowserRouter`
   const handleLogout = async () => {
     
-    const resp = await axios.get("http://localhost:5000/logout", {withCredentials: true});
+    const resp = await axios.get("https://tackyboard.herokuapp.com/logout", {withCredentials: true});
     if (resp.status === 200) {
       setLoggedIn(false);
       localStorage.clear();

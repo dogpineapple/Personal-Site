@@ -4,7 +4,7 @@ import LoginForm from '../LoginForm';
 import "./Login.css";
 import { useHistory } from 'react-router-dom';
 
-const loginUrl = "http://localhost:5000/login";
+const loginUrl = "https://tackyboard.herokuapp.com/login";
 
 function Login({ setLoggedIn }) {
   const history = useHistory();

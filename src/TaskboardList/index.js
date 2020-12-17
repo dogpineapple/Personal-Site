@@ -6,7 +6,7 @@ import './TaskboardList.scss';
 import NewTackyboardForm from '../NewTackyboardForm';
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000';
+const BASE_URL = 'https://tackyboard.herokuapp.com';
 
 function TaskboardList() {
   const [showForm, setShowForm] = useState(false);
