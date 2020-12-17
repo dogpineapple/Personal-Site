@@ -1,0 +1,43 @@
+.Taskboard {
+  background-color: #525252;
+  height: 100vh;
+}
+
+.Taskboard-header {
+  padding: 1.5rem 0 0 2.5rem;
+  color: rgb(247, 247, 247);
+  font-size: 1.6rem;
+}
+
+.Taskboard-no-task-detail {
+  text-align: center;
+  color: rgb(168, 168, 168);
+  font-size: 1.3rem;
+  margin-top: 5rem;
+}
+
+.Taskboard-window1 {
+  position: absolute;
+  border-right: rgb(65, 65, 65) 1px solid;
+  top: 8%;
+  left: 0;
+  width: 25%;
+  height: 90%;
+}
+
+.Taskboard-window2 {
+  position: absolute;
+  top: 8%;
+  left: 25%;
+  /* border-right: rgb(65, 65, 65) 1px solid; */
+  width: 60%;
+  height: 90%;
+}
+
+.Taskboard-window3 {
+  position: absolute;
+  top: 8%;
+  left: 85%;
+  width: 15%;
+  height: 90%;
+}

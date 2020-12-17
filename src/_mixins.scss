@@ -1,0 +1,20 @@
+@import "./variable";
+
+@mixin card-display {
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: $boxShadowColor
+}
+
+@mixin card-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+}
+
+@mixin button-style {
+  padding: 1rem;
+  border: none;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+}
