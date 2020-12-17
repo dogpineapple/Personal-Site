@@ -2,7 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Personal Website
 
-This project is my personal website meant to display my projects I have worked on and/or created. 
+This project is my personal website meant to display my projects I have worked on and/or created.
+Project demos:
+- **Microblog**: https://microblog.diana-liang.com/
+- **Tackyboard**: https://tackyboard.diana-liang.com/
+- **Jobly**: https://jobly.diana-liang.com/
 
 ## Available Scripts
 
