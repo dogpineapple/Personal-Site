@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 function SignUpForm({ setLoggedIn }) {
   const INITIAL_VALUES = { email: "", password: "", repeatPassword: "", fname: "", lname: "" };
   const [formData, setFormData] = useState(INITIAL_VALUES);
-  const { history }  = useHistory();
+  const history = useHistory();
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -14,12 +14,14 @@ function SignUpForm({ setLoggedIn }) {
   };
 
   const handleSubmit = async (evt) => {
+    localStorage.clear();
     evt.preventDefault();
     const resp = await axios.post('https://tackyboard.herokuapp.com/register', formData);
-    if (resp.status === 200) {
+    if (resp.status === 201) {
       let userData = resp.data;
       localStorage.setItem("email", userData.email);
       localStorage.setItem("user_id", userData.user_id);
+
       setLoggedIn(true);
       history.push("/tackyboards");
     } else {
