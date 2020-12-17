@@ -21,7 +21,7 @@ function LoginForm({handleLogin}) {
       <p className="LoginForm-signup">No account? <a href="/signup">Sign Up</a></p>
       <form onSubmit={handleSubmit}>
         <input name="email" value={formData.email} placeholder="Email" onChange={handleChange}/>
-        <input name="password" value={formData.password} placeholder="Password" onChange={handleChange}/>
+        <input name="password" type="password" value={formData.password} placeholder="Password" onChange={handleChange}/>
         <button>LOGIN</button>
       </form>
     </div>
