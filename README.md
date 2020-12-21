@@ -1,4 +1,5 @@
 This is the live repository for the project subdomain. 
+**Please visit https://github.com/dogpineapple/tackyboard to view the full-stack code.**
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
