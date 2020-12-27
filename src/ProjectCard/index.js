@@ -1,8 +1,5 @@
 import React from "react";
-import "./ProjectCard.css";
 
-
-// media query 
 function ProjectCard({ project }) {
   return (
     <div className="ProjectCard">

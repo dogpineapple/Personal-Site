@@ -1,6 +1,6 @@
 import React from "react";
 import { NavHashLink as NavLink } from 'react-router-hash-link';
-import './TopNaviBar.css'
+import './TopNaviBar.scss';
 
 function TopNaviBar() {
   const RESUME_URL = "https://drive.google.com/file/d/1ZrSerKqFsszBT4VoEnQrRBK3c72Ogq_V/view?usp=sharing";

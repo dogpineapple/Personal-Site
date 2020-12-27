@@ -1,10 +1,10 @@
 import React from "react";
 import ProjectCard from "../ProjectCard";
-import "./Projects.css";
 import * as securesurf_img from "../images/secureSurf.png";
 import * as warbler_img from "../images/Warbler_Demo.png";
 import * as microblog_img from "../images/Microblog_demo.png";
 import * as jobly_img from "../images/Jobly_demo.png";
+import * as tackyboard_img from "../images/tackyboard_img.png";
 
 
 function Projects() {
@@ -35,11 +35,21 @@ function Projects() {
 
   const secureSurf = {
     title: "SecureSurf",
-    description: "A browser security chrome browser extension and full-stack application. Created with JavaScript, Python, React.js, Flask, D3, Firebase RTD, and Firebase Auth",
+    description: "A browser security chrome browser extension and full-stack application. Created with JavaScript, Python, React.js, Flask, D3, Firebase RTD, and Firebase Auth.",
     image: securesurf_img,
     link: "https://github.com/dedding4341/securesurf_frontend",
     demo: "http://securesurf.netlify.app/"
   }
+
+  const tackyboard = {
+    title: "Tackyboard",
+    description: "A universal card-based task managing web application. Created with JavaScript, Python, React.js, Flask, PostgreSQL, JWT. Hosted through Netlify/Heroku.",
+    image: tackyboard_img,
+    link: "https://github.com/dogpineapple/tackyboard",
+    demo: "https://tackyboard.diana-liang.com/"
+  }
+  
+  
 
   return (
     <div className="Projects">

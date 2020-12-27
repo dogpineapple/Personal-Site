@@ -1,9 +1,8 @@
 import React from "react";
-import "./Skills.css";
 import SkillCard from "../SkillCard";
 
 function Skills() {
-  const languages = ["JavaScript", "Python", "HTML", "Swift"]
+  const languages = ["JavaScript", "Python", "HTML", "Kotlin"]
   const libraries = ["React", "Redux", "jQuery"]
   const frameworks = ["Express.js", "Flask", "Jest", "React Testing Library"]
   const databases = ["PostgreSQL", "MySQL"]
