@@ -1,0 +1,46 @@
+.NavBar {
+  background-color: rgb(22, 24, 26);
+  font-size: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.NavBar-logout-btn {
+  font-weight: 500;
+  margin: 0 1.5rem;
+}
+
+.NavBar-right-side {
+  display: flex;
+  align-items: center;
+}
+
+.NavBar-list {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.NavBar-title {
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  color: white;
+}
+
+.NavBar-title > svg {
+  transform: scale(0.7);
+}
+
+.NavBar-list a:hover,
+.NavBar-list a.active,
+.NavBar-logout-btn:hover,
+.NavBar-title:hover {
+  color: rgb(219, 219, 219);
+  text-decoration: none;
+}
+
+.NavBar-list a {
+  margin: 0 1.5rem;
+  color: gray;
+}
