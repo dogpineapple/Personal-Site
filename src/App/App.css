@@ -1,0 +1,32 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
+
+.App-container {
+  width: 75vw;
+  height: fit-content;
+}
+
+
+.App-divider {
+  padding: 50px 0px;
+  text-align: right;
+  width: 80vw;
+}
+
+.App-divider-line {
+  display: inline-block;
+  border-top: #dddddd 1px solid;
+  width: 100%;
+}
+
+.App-scrollcat {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: -5;
+  width: 10%;
+}

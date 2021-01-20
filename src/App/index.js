@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import Projects from '../Projects';
 import Contact from '../Contact';
-import Hero from '../Hero';
+import Landing from '../Landing';
 import About from '../About';
 import TopNaviBar from '../TopNaviBar';
+import './App.css';
 import * as noscrollCat from "../images/noscrollcat.png";
 import * as scrollCat from "../images/scrollcat.png";
 
@@ -28,7 +29,7 @@ function App() {
     <div className="App" id="top">
       <BrowserRouter>
         <TopNaviBar />
-        <div className="App-container"><Hero /></div>
+        <div className="App-container"><Landing /></div>
         <div className="App-divider">
           <span className="App-divider-line" id="about"></span>
         </div>

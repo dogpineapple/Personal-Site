@@ -1,0 +1,23 @@
+.Landing {
+  display: flex;
+  margin-top: 20vh;
+  flex-direction: column;
+}
+
+.Landing-divider {
+  padding-top: 10%;
+  text-align: right;
+  width: 100%;
+}
+
+.Landing-divider-line {
+  display: inline-block;
+  border-top: #dddddd 1px solid;
+  width: 100%;
+}
+
+@media screen and (max-width: 400px) {
+  .Landing {
+    margin-top: 13vh;
+  }
+}

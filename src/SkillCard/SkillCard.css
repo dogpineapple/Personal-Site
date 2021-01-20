@@ -1,0 +1,8 @@
+.SkillCard-item {
+  text-align: center;
+  border: rgb(74, 189, 255) 7px solid;
+  background-color: rgb(74, 189, 255);
+  color: white;
+  border-radius: 7px;
+  font-weight: 600;
+}
